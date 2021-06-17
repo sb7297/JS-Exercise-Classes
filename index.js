@@ -77,9 +77,31 @@ class Person {
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
   
- class Car {
-    
+class Car {
+  constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
   }
+
+  fill(gallons) {
+    this.tank += gallons;
+  }
+
+  drive(distance) {
+    const fuelUsed = distance / this.milesPerGallon;
+    if (fuelUsed <= this.tank) {
+      this.tank -= fuelUsed;
+      this.odometer += distance;
+    } else {
+      const distTravelled = this.tank * this.milesPerGallon;
+      this.tank = 0;
+      this.odometer += distTravelled;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
+}
   
   /*
     TASK 3
