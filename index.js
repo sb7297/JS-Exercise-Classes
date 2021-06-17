@@ -156,6 +156,11 @@ class Lambdasian {
    grade(student, subject) {
      return `${student.name} receives a perfect score on ${subject}`;
    }
+
+   judge(student) {
+     const pointDiff = Math.floor(Math.random() * 20) - 9; // range [-10, 10]
+     student.grade += pointDiff;
+   }
  }
   /*
     TASK 5
@@ -178,6 +183,7 @@ class Lambdasian {
      this.previousBackground = attributes.previousBackground;
      this.className = attributes.className;
      this.favSubjects = attributes.favSubjects;
+     this.grade = Math.floor(Math.random() * 100 ) + 1; // range [1, 100]
    }
 
    listSubjects() {
@@ -191,6 +197,11 @@ class Lambdasian {
 
    sprintChallenge(subject) {
      return `${this.name} has begun sprint challenge on ${subject}`;
+   }
+
+   graduate() {
+     if (this.grade > 70) return `Congratulations, ${this.name} graduated!`;
+     else return `Sorry, keep grinding ${this.name}`;
    }
  }
   
